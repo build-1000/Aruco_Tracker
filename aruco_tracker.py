@@ -13,6 +13,9 @@ import cv2
 import cv2.aruco as aruco
 import glob
 
+# uses video capture method for getting images or series of images from camera or other parts 
+# cv.VideoCapture(	index	) ->	<VideoCapture object>
+# https://docs.opencv.org/3.4/d8/dfe/classcv_1_1VideoCapture.html#a5d5f5dacb77bbebdcbfb341e3d4355c1
 cap = cv2.VideoCapture(1)
 
 ####---------------------- CALIBRATION ---------------------------
@@ -56,6 +59,11 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.sh
 
 ###------------------ ARUCO TRACKER ---------------------------
 while (True):
+    # uses cv2.VideoCapture.read(	[, image]	) ->	retval, image method
+    # [out]	image	the video frame is returned here. If no frames has been grabbed the image will be empty.
+    # https://stackoverflow.com/questions/59398377/opencv-python-convert-an-image-to-a-cv2-videocapture-object
+    # https://docs.opencv.org/3.4/d8/dfe/classcv_1_1VideoCapture.html#a473055e77dd7faa4d26d686226b292c1
+    
     ret, frame = cap.read()
 
     # operations on the frame
